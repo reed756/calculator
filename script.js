@@ -43,34 +43,63 @@ function operate (operator, a, b) {
 you should be storing the ‘display value’ in a variable somewhere for use in the 
 next step.*/
 
+/* Make the calculator work! You’ll need to store the first number that is input into the calculator when a user 
+presses an operator, and also save which operation has been chosen and then operate() on them when the user presses 
+the “=” key. You should already have the code that can populate the display, so once operate() has been called, 
+update the display with the ‘solution’ to the operation. This is the hardest part of the project. You need to 
+figure out how to store all the values and call the operate function with them. Don’t feel bad if it takes you a 
+while to figure out the logic. */
+
 const display = document.querySelector("#display");
 const buttons = document.querySelectorAll("button");
-const clear = document.getElementsByClassName("clear");
+const numbers = document.querySelectorAll(".numbers");
 display.textContent = "0";
 let displayValue1 = 0;
 let displayValue2 = 0;
-let operator = "";
+let operator1 = "";
 
     const buttonPress = buttons.forEach((button) => {
         button.addEventListener('click', function() {
-            if (display.textContent === "0" && button.className === "numbers" && operator !== "add") {
+            if (display.textContent === "0" && button.className === "numbers") {
                 display.textContent = "";
                 display.textContent = `${display.textContent}${button.id}`;
                 displayValue1 = `${button.id}`;
-                console.log(operator);
-            } else if (display.textContent !== "0" && button.className === "numbers" && operator !== "add") {
+            } else if (display.textContent !== "0" && button.className === "numbers") {
                 display.textContent = `${display.textContent}${button.id}`;
                 displayValue1 += `${button.id}`;
-                console.log(operator);
             } else if (button.className === "clear") {
                 display.textContent = "0";
                 displayValue1 = 0;
                 displayValue2 = 0;
-                operator = "";
-            } else if (button.className = "operator") {
-                operator = `${button.id}`;
+                operator1 = "";
+                numbers.forEach(function(number) {
+                    number.classList.remove("numbersTwo");
+                })
+            } else if (button.className === "operator") {
                 display.textContent = "0";
-                console.log(operator);
+                operator1 = add;
+                numbers.forEach(function(number) {
+                    number.classList.add("numbersTwo");
+                })
+                if (button.id === "add") {
+                    operator1 = add;
+                } else if (button.id === "subtract") {
+                    operator1 = subtract;
+                } else if (button.id === "divide") {
+                    operator1 = divide;
+                } else if (button.id === "multiply") {
+                    operator1 = multiply;
+                }
+            } else if (display.textContent === "0" && button.className === "numbers numbersTwo") {
+                display.textContent = "";
+                display.textContent = `${display.textContent}${button.id}`;
+                displayValue2 = `${button.id}`;
+            } else if (display.textContent !== "0" && button.className === "numbers numbersTwo") {
+                display.textContent = `${display.textContent}${button.id}`;
+                displayValue2 += `${button.id}`;
+            } else if (button.className === "equals") {
+                let finalAns = operate(operator1, Number(displayValue1), Number(displayValue2));
+                display.textContent = `${finalAns}`;
             }
         })
     });

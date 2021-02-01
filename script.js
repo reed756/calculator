@@ -76,7 +76,6 @@ let operator1 = "";
                     number.classList.remove("numbersTwo");
                 })
             } else if (button.className === "operator") {
-                display.textContent = "0";
                 operator1 = add;
                 numbers.forEach(function(number) {
                     number.classList.add("numbersTwo");
@@ -91,15 +90,17 @@ let operator1 = "";
                     operator1 = multiply;
                 }
             } else if (display.textContent === "0" && button.className === "numbers numbersTwo") {
-                display.textContent = "";
-                display.textContent = `${display.textContent}${button.id}`;
                 displayValue2 = `${button.id}`;
             } else if (display.textContent !== "0" && button.className === "numbers numbersTwo") {
-                display.textContent = `${display.textContent}${button.id}`;
                 displayValue2 += `${button.id}`;
             } else if (button.className === "equals") {
                 let finalAns = operate(operator1, Number(displayValue1), Number(displayValue2));
                 display.textContent = `${finalAns}`;
+                displayValue1 = finalAns;
+                displayValue2 = 0;
+                numbers.forEach(function(number) {
+                    number.classList.remove("numbersTwo");
+                })
             }
         })
     });

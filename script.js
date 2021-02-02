@@ -57,6 +57,9 @@ display.textContent = "0";
 let displayValue1 = 0;
 let displayValue2 = 0;
 let operator1 = "";
+function roundToTwo(num) {    
+    return +(Math.round(num + "e+2")  + "e-2");
+}
 
     const buttonPress = buttons.forEach((button) => {
         button.addEventListener('click', function() {
@@ -95,6 +98,7 @@ let operator1 = "";
                 displayValue2 += `${button.id}`;
             } else if (button.className === "equals") {
                 let finalAns = operate(operator1, Number(displayValue1), Number(displayValue2));
+                finalAns = roundToTwo(finalAns);
                 display.textContent = `${finalAns}`;
                 displayValue1 = finalAns;
                 displayValue2 = 0;

@@ -1,3 +1,14 @@
+CALCULATOR
+
+DESCRIPTION
+
+Here I created a calculator that can add, subtract, divide, and multiply as part of The Odin Project Curriculum using HTML, CSS, and Javascript. 
+
+LIVE - https://reed756.github.io/calculator/
+REPO - https://github.com/reed756/calculator
+
+INSTRUCTIONS
+
 Here are some use cases (abilities your project needs to have):
 
 Your calculator is going to contain functions for all of the basic math operators you typically find on simple calculators, so start by creating functions for the following items and testing them in your browser’s console.

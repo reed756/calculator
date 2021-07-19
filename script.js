@@ -1,12 +1,3 @@
-/* Your calculator is going to contain functions for all of the basic math operators you 
-typically find on simple calculators, so start by creating functions for the following 
-items and testing them in your browser’s console.
-add
-subtract
-multiply
-divide
-*/
-
 function add (a, b) {
 	return a + b;
 }
@@ -23,9 +14,6 @@ function divide (a , b) {
     return a / b;
 }
 
-/* Create a new function operate that takes an operator and 2 numbers and then calls 
-one of the above functions on the numbers. */
-
 function operate (operator, a, b) {
     switch (operator) {
         case add:
@@ -38,17 +26,6 @@ function operate (operator, a, b) {
             return divide(a, b);
     }
 }
-
-/*Create the functions that populate the display when you click the number buttons… 
-you should be storing the ‘display value’ in a variable somewhere for use in the 
-next step.*/
-
-/* Make the calculator work! You’ll need to store the first number that is input into the calculator when a user 
-presses an operator, and also save which operation has been chosen and then operate() on them when the user presses 
-the “=” key. You should already have the code that can populate the display, so once operate() has been called, 
-update the display with the ‘solution’ to the operation. This is the hardest part of the project. You need to 
-figure out how to store all the values and call the operate function with them. Don’t feel bad if it takes you a 
-while to figure out the logic. */
 
 const display = document.querySelector("#display");
 const buttons = document.querySelectorAll("button");
@@ -107,7 +84,7 @@ function checkZero(operator, b) {
             } else if (button.className === "equals numbersTwo") {
                 let finalAns = operate(operator1, Number(displayValue1), Number(displayValue2));
                 finalAns = roundToTwo(finalAns);
-                if (operator1 = divide && Number(displayValue2) === 0) {
+                if (operator1 === divide && Number(displayValue2) === 0) {
                     finalAns = "Wrong!";
                 }
                 display.textContent = `${finalAns}`;
@@ -120,30 +97,3 @@ function checkZero(operator, b) {
             }
         })
     });
-/*
-clear.addEventListener("click", function clearDisplay(event) {
-    event.display.textContent = "";
-});
-
-if (button.id != "" && button.id != "clear" && button.id != "add") {
-            display.textContent = "";
-            display.textContent = `${display.textContent}${button.id}`;
-            } else if (button.id === "clear") {
-                display.textContent = "";
-            } else if (button.id === "add") {
-                display.textContent = "";
-            }
-
-else if (operator === "add" && button.className === "numbers" && displayValue2 === 0) {
-                display.textContent = `${display.textContent}${button.id}`;
-                displayValue2 = `${button.id}`;
-                console.log(displayValue2);
-                console.log(operator);
-            } else if (operator === "add" && button.className === "numbers" && displayValue2 !== 0) {
-                display.textContent = `${display.textContent}${button.id}`;
-                displayValue2 += `${button.id}`;
-                console.log(displayValue2);
-                console.log(operator);
-            }
-
-*/
